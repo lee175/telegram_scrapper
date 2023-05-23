@@ -9,6 +9,7 @@ from telethon.tl.functions.channels import GetParticipantsRequest
 import json
 from datetime import datetime, timedelta
 from telethon.tl.functions.channels import JoinChannelRequest
+from telethon.tl.functions.channels import LeaveChannelRequest
 
 logging.basicConfig(level=logging.WARNING)
 
@@ -43,14 +44,16 @@ SOURCE_CHANNEL_ENTITY = client.get_entity(SOURCE)
 TARGET_CHANNEL_ENTITY = client.get_entity(TARGET)
 
 try:
-    client(JoinChannelRequest(SOURCE_CHANNEL_ENTITY))
+    client(LeaveChannelRequest(SOURCE_CHANNEL_ENTITY))
+    print('left source channel')
 except:
     print('error occured while joining SOURCE CHANNEL')
     print('quiting application')
     quit()
 
 try:
-    client(JoinChannelRequest(TARGET_CHANNEL_ENTITY))
+    client(LeaveChannelRequest(TARGET_CHANNEL_ENTITY))
+    print('left target channel')
 except:
     print('error occured while joining TARGET CHANNEL')
     print('quiting application')
