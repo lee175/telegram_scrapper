@@ -62,7 +62,6 @@ def get_data_group(client, phone):
     with open('data/group/' + phone + '.json', 'w', encoding='utf-8') as f:
         json.dump(results, f, indent=4, ensure_ascii=False)
 
-
 def get_data_user(client, group):
     group_id = str(group.id)
     print(group_id)

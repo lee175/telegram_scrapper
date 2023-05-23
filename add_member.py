@@ -46,7 +46,7 @@ for account in accounts:
     api_id = account['api_id']
     api_hash = account['api_hash']
     phone = account['phone']
-
+   
     client = TelegramClient(folder_session + phone, api_id, api_hash)
 
     client.connect()
@@ -71,12 +71,12 @@ for my_client in clients:
             groups = json.loads(f.read())
 
         current_target_group = get_group_by_id(groups, group_target_id)
-
         if current_target_group:
             group_access_hash = int(current_target_group['access_hash'])
             target_group_entity = InputPeerChannel(group_target_id, group_access_hash)
 
             path_group_user = root_path + '/data/user/' + phone + "_" + str(group_source_id) + '.json'
+            
             if os.path.isfile(path_group_user):
                 # add target_group_entity key value
                 my_client['target_group_entity'] = target_group_entity
